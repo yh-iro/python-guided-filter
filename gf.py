@@ -170,13 +170,10 @@ def guided_filter(I, p, r, eps, s=None):
     return np.squeeze(out) if p.ndim == 2 else out
 
 
-def test_gf():
+def test_gf(r=8, eps=0.05):
     import imageio
     cat = imageio.imread('cat.bmp').astype(np.float32) / 255
     tulips = imageio.imread('tulips.bmp').astype(np.float32) / 255
-
-    r = 8
-    eps = 0.05
 
     cat_smoothed = guided_filter(cat, cat, r, eps)
     cat_smoothed_s4 = guided_filter(cat, cat, r, eps, s=4)
